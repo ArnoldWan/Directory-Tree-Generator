@@ -1,9 +1,11 @@
 # Directory-Tree-Generator
 
-Version 1 - Display the directory tree in CMD.
+Version 1: 
+- Display the directory tree in CMD.
 
-Version 2 - Save the directory tree result in a newly created folder and txt file.
-          - Generate a HTML for visual presentation.
+Version 2: 
+- Save the directory tree result in a newly created folder and txt file.
+- Generate a HTML for visual presentation.
 
 ------------------------------------------------
 
