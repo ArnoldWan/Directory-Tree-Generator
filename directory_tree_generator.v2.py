@@ -16,20 +16,19 @@ def generate_tree(dir_path, prefix='', exclude_files=None, is_root=True, result_
     contents = [item for item in os.listdir(dir_path) if item not in exclude_files]
     contents = sorted(contents, key=lambda s: s.lower())  # Sort for consistent output
 
+    if is_root:
+        result_lines.append(os.path.abspath(dir_path))  # Add the top-level directory path
+        prefix += '    '  # Increase the prefix for the next level
+
     for index, item in enumerate(contents):
         item_path = os.path.join(dir_path, item)
         connector = '├── ' if index < len(contents) - 1 else '└── '
 
-        if is_root:
-            # Add the top-level directory without prefix
-            result_lines.append(item)
-            if os.path.isdir(item_path):
-                generate_tree(item_path, '    ', exclude_files, is_root=False, result_lines=result_lines)
-        else:
-            result_lines.append(prefix + connector + item)
-            if os.path.isdir(item_path):
-                next_prefix = prefix + ('│   ' if index < len(contents) - 1 else '    ')
-                generate_tree(item_path, next_prefix, exclude_files, is_root=False, result_lines=result_lines)
+        result_lines.append(prefix + connector + item)
+        if os.path.isdir(item_path):
+            next_prefix = prefix + ('│   ' if index < len(contents) - 1 else '    ')
+            generate_tree(item_path, next_prefix, exclude_files, is_root=False, result_lines=result_lines)
+
     return result_lines
 
 def generate_html_tree(dir_path, exclude_files=None):
@@ -41,7 +40,7 @@ def generate_html_tree(dir_path, exclude_files=None):
 
     icon_mapping = {
         "folder": "📁",
-        ".py": "🐍",  # Professional icon for Python files
+        ".py": "🐍",
         ".cs": "💻",
         ".html": "🌐",
         ".css": "🎨",
@@ -56,20 +55,24 @@ def generate_html_tree(dir_path, exclude_files=None):
         _, ext = os.path.splitext(file_name)
         return icon_mapping.get(ext, icon_mapping["default"])
 
-    def get_html_list(path, exclude_files):
+    def get_html_list(path, exclude_files, is_root=False):
         contents = [item for item in os.listdir(path) if item not in exclude_files]
         contents = sorted(contents, key=lambda s: s.lower())
+        folders = [item for item in contents if os.path.isdir(os.path.join(path, item))]
+        files = [item for item in contents if not os.path.isdir(os.path.join(path, item))]
+
         html = '<ul>'
-        for item in contents:
-            item_path = os.path.join(path, item)
-            if os.path.isdir(item_path):
-                html += f'<li><span class="folder">{icon_mapping["folder"]} {item}</span>{get_html_list(item_path, exclude_files)}</li>'
-            else:
-                html += f'<li><span class="file">{get_icon(item)} {item}</span></li>'
-        html += "</ul>"
+        for folder in folders:
+            item_path = os.path.join(path, folder)
+            html += f'<li class="folder"><span>{icon_mapping["folder"]} {folder}</span>{get_html_list(item_path, exclude_files, is_root=False)}</li>'
+
+        for file in files:
+            html += f'<li class="file"><span>{get_icon(file)} {file}</span></li>'
+        html += '</ul>'
         return html
 
-    html_structure = get_html_list(dir_path, exclude_files)
+    top_level_dir = os.path.abspath(dir_path)
+    html_structure = get_html_list(dir_path, exclude_files, is_root=True)
     return f"""
     <!DOCTYPE html>
     <html lang="en">
@@ -78,17 +81,36 @@ def generate_html_tree(dir_path, exclude_files=None):
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Directory Structure</title>
         <style>
-            ul {{ list-style-type: none; padding-left: 1em; }}
-            .folder-structure {{ display: flex; flex-wrap: wrap; }}
-            .folder-structure ul {{ margin: 0 1em 0 0; }}
-            .folder::before {{ content: ""; }}
-            .file::before {{ content: ""; }}
-            .folder, .file {{ white-space: nowrap; }}
+            body {{
+                font-family: Arial, sans-serif;
+            }}
+            ul {{
+                list-style-type: none;
+                padding-left: 20px;
+                position: relative;
+            }}
+            ul ul {{
+                margin-left: 20px;
+            }}
+            li {{
+                position: relative;
+                margin-left: -20px;
+                cursor: default;
+            }}
+            span {{
+                display: inline-block;
+                margin-left: 5px;
+            }}
+            .top-level {{
+                font-weight: bold;
+                font-size: 1.2em;
+            }}
         </style>
     </head>
     <body>
         <h1>Directory Structure of {os.path.basename(dir_path)}</h1>
-        <div class="folder-structure">{html_structure}</div>
+        <div class="top-level"><span>{icon_mapping["folder"]} {top_level_dir}</span></div>
+        <div>{html_structure}</div>
     </body>
     </html>
     """
