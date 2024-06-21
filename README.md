@@ -19,4 +19,4 @@ To compile the .py file into .exe file:
 
 Install the below before running:
 
-In CMD, run: pip install pyinstaller
+- In CMD, run: pip install pyinstaller
