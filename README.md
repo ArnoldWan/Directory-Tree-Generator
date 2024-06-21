@@ -14,3 +14,9 @@ To compile the .py file into .exe file:
 1. Open CMD and navigate to the project directory.
 2. Run the command: pyinstaller --onefile --console directory_tree_generator.v2.py
 3. Find the .exe file in the dist folder.
+
+------------------------------------------------
+
+Install the below before running:
+
+In CMD, run: pip install pyinstaller
