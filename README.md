@@ -9,6 +9,13 @@ Version 2:
 
 ------------------------------------------------
 
+To use:
+
+1. Copy the .exe file and paste it inside the desired folder path
+2. Double click the .exe file to run
+
+------------------------------------------------
+
 To compile the .py file into .exe file:
 
 1. Open CMD and navigate to the project directory.
