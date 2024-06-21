@@ -26,6 +26,7 @@ Install the below before running:
 Preview
 
 txt file:
+
 ![image](https://github.com/ArnoldWan/Directory-Tree-Generator/assets/26390856/a99cc2ca-0d9e-44b0-b845-90f7b06ab09b)
 
 html file:
