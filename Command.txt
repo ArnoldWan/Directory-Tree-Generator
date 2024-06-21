@@ -1,0 +1,5 @@
+CMD command to compile the py file into exe file
+	
+	pip install pyinstaller
+
+	pyinstaller --onefile --console directory_tree_generator.v2.py
