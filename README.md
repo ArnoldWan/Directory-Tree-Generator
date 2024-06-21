@@ -20,3 +20,13 @@ To compile the .py file into .exe file:
 Install the below before running:
 
 - In CMD, run: pip install pyinstaller
+
+------------------------------------------------
+
+Preview
+
+txt file:
+![image](https://github.com/ArnoldWan/Directory-Tree-Generator/assets/26390856/a99cc2ca-0d9e-44b0-b845-90f7b06ab09b)
+
+html file:
+![image](https://github.com/ArnoldWan/Directory-Tree-Generator/assets/26390856/de827e67-a7e7-4f47-9015-5aabac6feecf)
