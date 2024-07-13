@@ -1,0 +1,12 @@
+Version 3:
+	- Exclude pyc files
+
+Version 4:
+	- Prompts the user to enter a directory path
+	- Generates an output folder name based on the input directory name
+	- Checks if an output folder with the same name exists and appends a number if needed
+	
+Version 5 (Not yet work):
+	- Updated the CSS to manage the display of nested lists and added styles for the folder items
+	- Added JavaScript to handle clicking on folders to expand/collapse and buttons to expand/collapse all folders
+	- Added two buttons that allow the user to expand or collapse all folders at once

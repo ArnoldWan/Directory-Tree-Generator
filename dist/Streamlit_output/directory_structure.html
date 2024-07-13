@@ -1,0 +1,79 @@
+
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Directory Structure</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+            }
+            ul {
+                list-style-type: none;
+                padding-left: 20px;
+                position: relative;
+            }
+            ul ul {
+                margin-left: 20px;
+            }
+            li {
+                position: relative;
+                margin-left: -20px;
+                cursor: pointer;
+            }
+            span {
+                display: inline-block;
+                margin-left: 5px;
+            }
+            .top-level {
+                font-weight: bold;
+                font-size: 1.2em;
+            }
+            .folder > span {
+                cursor: pointer;
+            }
+            .nested {
+                display: none;
+            }
+            .active > .nested {
+                display: block;
+            }
+            .buttons {
+                margin: 10px 0;
+            }
+            .buttons button {
+                margin-right: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <h1>Directory Structure of Streamlit</h1>
+        <div class="top-level"><span>📁 C:\Users\Tsz\Projects\Stocks-Filtering-System\Streamlit</span></div>
+        <div class="buttons">
+            <button onclick="expandAll()">Expand All</button>
+            <button onclick="collapseAll()">Collapse All</button>
+        </div>
+        <div><ul class="nested"><li class="folder"><span>📁 __pycache__</span><ul class="nested"></ul></li><li class="folder"><span>📁 config</span><ul class="nested"><li class="file"><span>🐍 config.py</span></li></ul></li><li class="folder"><span>📁 data</span><ul class="nested"><li class="file"><span>📄 example_data.csv</span></li></ul></li><li class="folder"><span>📁 notebooks</span><ul class="nested"><li class="file"><span>📄 exploratory_data_analysis.ipynb</span></li></ul></li><li class="folder"><span>📁 src</span><ul class="nested"><li class="folder"><span>📁 __pycache__</span><ul class="nested"></ul></li><li class="folder"><span>📁 analysis</span><ul class="nested"><li class="folder"><span>📁 __pycache__</span><ul class="nested"></ul></li><li class="file"><span>🐍 __init__.py</span></li><li class="file"><span>🐍 display_benzinga_earnings_calendar.py</span></li><li class="file"><span>🐍 display_historical_earnings_stats.py</span></li><li class="file"><span>🐍 display_nasdaq_earnings_calendar.py</span></li><li class="file"><span>🐍 display_stock_basic_info.py</span></li></ul></li><li class="folder"><span>📁 data_processing</span><ul class="nested"><li class="folder"><span>📁 __pycache__</span><ul class="nested"></ul></li><li class="file"><span>🐍 __init__.py</span></li><li class="file"><span>🐍 connection_test.py</span></li><li class="file"><span>🐍 database.py</span></li><li class="file"><span>🐍 fetch_index_tickers.py</span></li><li class="file"><span>🐍 import_earnings_calendar_benzinga.py</span></li><li class="file"><span>🐍 import_earnings_calendar_nasdaq.py</span></li><li class="file"><span>🐍 import_historical_data.py</span></li><li class="file"><span>🐍 import_indices_and_mappings.py</span></li><li class="file"><span>🐍 import_stock_basic_info.py</span></li><li class="file"><span>🐍 import_stock_details.py</span></li><li class="file"><span>🐍 import_tickers.py</span></li><li class="file"><span>🐍 update_historical_data.py</span></li></ul></li><li class="folder"><span>📁 tests</span><ul class="nested"><li class="folder"><span>📁 __pycache__</span><ul class="nested"></ul></li><li class="folder"><span>📁 analysis</span><ul class="nested"><li class="folder"><span>📁 __pycache__</span><ul class="nested"></ul></li><li class="file"><span>🐍 __init__.py</span></li><li class="file"><span>🐍 test_display_benzinga_earnings_calendar.py</span></li><li class="file"><span>🐍 test_display_historical_earnings_stats.py</span></li><li class="file"><span>🐍 test_display_nasdaq_earnings_calendar.py</span></li><li class="file"><span>🐍 test_display_stock_basic_info.py</span></li></ul></li><li class="folder"><span>📁 data_processing</span><ul class="nested"><li class="folder"><span>📁 __pycache__</span><ul class="nested"></ul></li><li class="file"><span>🐍 __init__.py</span></li><li class="file"><span>🐍 test_connection_test.py</span></li><li class="file"><span>🐍 test_database.py</span></li><li class="file"><span>🐍 test_fetch_index_tickers.py</span></li><li class="file"><span>🐍 test_import_earnings_calendar_benzinga.py</span></li><li class="file"><span>🐍 test_import_earnings_calendar_nasdaq.py</span></li><li class="file"><span>🐍 test_import_historical_data.py</span></li><li class="file"><span>🐍 test_import_indices_and_mappings.py</span></li><li class="file"><span>🐍 test_import_stock_basic_info.py</span></li><li class="file"><span>🐍 test_import_stock_details.py</span></li><li class="file"><span>🐍 test_import_tickers.py</span></li><li class="file"><span>🐍 test_update_historical_data.py</span></li></ul></li><li class="folder"><span>📁 experimentals</span><ul class="nested"><li class="folder"><span>📁 yfinance_tests</span><ul class="nested"><li class="file"><span>🐍 test_earnings_calendar_date_range.py</span></li><li class="file"><span>🐍 test_earnings_calendar_single_date.py</span></li><li class="file"><span>🐍 test_fetch_index_components.py</span></li><li class="file"><span>🐍 test_fetch_indices.py</span></li><li class="file"><span>🐍 test_fetch_stock_details.py</span></li><li class="file"><span>🐍 test_options_data.py</span></li><li class="file"><span>🐍 test_real_time_data.py</span></li></ul></li><li class="file"><span>🐍 test_connection_string.py</span></li><li class="file"><span>🐍 test_create_and_update_tables.py</span></li><li class="file"><span>🐍 test_create_tables.py</span></li><li class="file"><span>🐍 test_ip_rotation.py</span></li></ul></li><li class="folder"><span>📁 standalone_functions</span><ul class="nested"><li class="file"><span>🐍 test_scrape_earnings_dates_nasdaq.py</span></li></ul></li><li class="file"><span>🐍 __init__.py</span></li></ul></li><li class="folder"><span>📁 ui</span><ul class="nested"><li class="folder"><span>📁 __pycache__</span><ul class="nested"></ul></li><li class="file"><span>🐍 __init__.py</span></li><li class="file"><span>🐍 analysis.py</span></li><li class="file"><span>🐍 components.py</span></li><li class="file"><span>🐍 data_processing.py</span></li></ul></li><li class="folder"><span>📁 utils</span><ul class="nested"><li class="file"><span>🐍 __init__.py</span></li><li class="file"><span>🐍 helpers.py</span></li><li class="file"><span>🐍 logger.py</span></li></ul></li><li class="file"><span>🐍 __init__.py</span></li><li class="file"><span>🐍 main_analysis.py</span></li><li class="file"><span>🐍 main_data_processing.py</span></li><li class="file"><span>🐍 main_ui.py</span></li></ul></li><li class="file"><span>📄 README.md</span></li><li class="file"><span>📄 requirements.txt</span></li><li class="file"><span>🐍 setup.py</span></li><li class="file"><span>📄 start.bat</span></li><li class="file"><span>🐍 streamlit_app.py</span></li></ul></div>
+        <script>
+            document.querySelectorAll('.folder > span').forEach(span => {
+                span.addEventListener('click', function() {
+                    this.parentElement.classList.toggle('active');
+                });
+            });
+
+            function expandAll() {
+                document.querySelectorAll('.folder').forEach(folder => {
+                    folder.classList.add('active');
+                });
+            }
+
+            function collapseAll() {
+                document.querySelectorAll('.folder').forEach(folder => {
+                    folder.classList.remove('active');
+                });
+            }
+        </script>
+    </body>
+    </html>
+    
